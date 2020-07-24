@@ -22,13 +22,19 @@ RSpec.describe 'As a visitor', type: :feature do
     it 'I see a list of ingredients for that dish and the chef\'s name' do
       visit dish_path(@dish_1.id)
 
-      expect(page).to have_content(@ing_1.name)
+      visit dish_path(@dish_1.id)
       expect(page).to have_content(@ing_1.calories)
       expect(page).to have_content(@ing_2.name)
       expect(page).to have_content(@ing_2.calories)
       expect(page).to have_content(@ing_3.name)
       expect(page).to have_content(@ing_3.calories)
       expect(page).to have_content(@chef_1.name)
+    end
+
+    it 'I can see the total calorie count for that dish' do
+      visit dish_path(@dish_1.id)
+
+      expect(page).to have_content(@dish_1.total_calories)
     end
   end
 end
