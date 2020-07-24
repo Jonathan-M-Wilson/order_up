@@ -7,4 +7,9 @@ class Dish <ApplicationRecord
   def total_calories
     self.ingredients.sum(:calories)
   end
+
+  def ingredient_names
+    x = self.ingredients.map {|ingredient| ingredient.name}
+    x.join(', ')
+  end
 end
